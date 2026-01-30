@@ -226,33 +226,37 @@ document.getElementById("asnForm").addEventListener("submit", function(e){
   e.preventDefault();
 
   const formData = new FormData(this);
+  const data = {};
+
+  formData.forEach((value, key) => {
+    data[key] = value;
+  });
 
   fetch("https://script.google.com/macros/s/AKfycbyA72KaczTMr6wV0HmK4xjFJrBAlzQKgELFACRtztUMVktTzXJFbkD397IE9QXzV3-w/exec", {
     method: "POST",
-    body: formData
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
   })
-  .then(res => res.text())
+  .then(res => res.json())
   .then(res => {
-
-    console.log("SERVER:", res);
-
-    if(res.includes("SUCCESS")){
+    if(res.status === "SUCCESS"){
       alert("✅ Data berhasil disimpan");
       this.reset();
     } else {
-      alert("❌ Gagal simpan\n" + res);
+      alert("❌ Gagal simpan\n" + res.message);
     }
-
   })
-  .catch(err=>{
+  .catch(err => {
     console.error(err);
     alert("❌ Koneksi error");
   });
-
 });
 </script>
 </body>
 </html>
+
 
 
 
