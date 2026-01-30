@@ -222,33 +222,37 @@ button:hover{
 
 </div>
 <script>
-document.getElementById("asnForm").addEventListener("submit", function(e){
-  e.preventDefault();
+function kirimData(e) {
+  e.preventDefault(); // ⛔ MATIKAN REFRESH PASTI
 
-  const formData = new FormData(this);
+  const form = document.getElementById("asnForm");
+  const formData = new FormData(form);
 
-  fetch("https://script.google.com/macros/s/AKfycbx26waEnqBVHHK-3qVXj5Xig9QcBWNCBKM099DW2QJ73kSCQKbi2EjZKyAlZksWlw2L/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbw6I5Ge-tpEeunAY9HvaRwORY239wyyzQw81E-sppIhSi5l8ZqkHwuj8vwiJfkYy6vL/exec", {
     method: "POST",
     body: formData
   })
   .then(res => res.text())
-  .then(res => {
-    console.log(res);
-    if (res.includes("SUCCESS")) {
+  .then(text => {
+    console.log("RESPON SERVER:", text);
+    if (text.includes("SUCCESS")) {
       alert("✅ Data berhasil disimpan");
-      this.reset();
+      form.reset();
     } else {
-      alert("❌ Gagal simpan\n" + res);
+      alert("❌ Gagal simpan\n" + text);
     }
   })
   .catch(err => {
     console.error(err);
     alert("❌ Koneksi error");
   });
-});
+
+  return false; // ⛔ DOUBLE SAFETY
+}
 </script>
 </body>
 </html>
+
 
 
 
