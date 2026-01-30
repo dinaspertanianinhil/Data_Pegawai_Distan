@@ -155,8 +155,11 @@ button:hover{
 <input name="nama" placeholder="Nama">
 <input name="gelar_depan" placeholder="Gelar Depan">
 <input name="gelar_belakang" placeholder="Gelar Belakang">
-<input type="date" name="tanggal_lahir" placeholder="Tanggal Lahir" 
-       onfocus="this.showPicker ? this.showPicker() : null;">
+<div style="position: relative; width: 100%;">
+  <label for="tanggal_lahir" style="display:block; margin-bottom:4px; font-size:13px; color:#333;">Tanggal Lahir</label>
+  <input type="date" id="tanggal_lahir" name="tanggal_lahir" style="width:100%; padding-right:30px;" placeholder="Pilih Tanggal Lahir">
+  <span style="position:absolute; right:8px; top:50%; transform:translateY(-50%); pointer-events:none;">📅</span>
+</div>
 <input name="jabatan" placeholder="Nama Jabatan">
 <input name="jenis_jabatan" placeholder="Jenis Jabatan">
 <input name="gol_ruang" placeholder="Golongan">
@@ -258,6 +261,7 @@ button:hover{
 </script>
 </body>
 </html>
+
 
 
 
