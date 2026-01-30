@@ -222,30 +222,23 @@ button:hover{
 
 </div>
 <script>
-document.getElementById("1DK-7-0ImlRMM-h1-t1tY1wpgAIrw8M6TMW8SgbXf6t0").addEventListener("submit", function(e){
+document.getElementById("asnForm").addEventListener("submit", function(e){
   e.preventDefault();
 
   const formData = new FormData(this);
-  const data = {};
 
-  formData.forEach((value, key) => {
-    data[key] = value;
-  });
-
-  fetch("https://script.google.com/macros/s/AKfycbw6I5Ge-tpEeunAY9HvaRwORY239wyyzQw81E-sppIhSi5l8ZqkHwuj8vwiJfkYy6vL/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbx26waEnqBVHHK-3qVXj5Xig9QcBWNCBKM099DW2QJ73kSCQKbi2EjZKyAlZksWlw2L/exec", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
+    body: formData
   })
-  .then(res => res.json())
+  .then(res => res.text())
   .then(res => {
-    if(res.status === "SUCCESS"){
+    console.log(res);
+    if (res.includes("SUCCESS")) {
       alert("✅ Data berhasil disimpan");
       this.reset();
     } else {
-      alert("❌ Gagal simpan\n" + res.message);
+      alert("❌ Gagal simpan\n" + res);
     }
   })
   .catch(err => {
@@ -256,5 +249,6 @@ document.getElementById("1DK-7-0ImlRMM-h1-t1tY1wpgAIrw8M6TMW8SgbXf6t0").addEvent
 </script>
 </body>
 </html>
+
 
 
