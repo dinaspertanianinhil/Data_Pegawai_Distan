@@ -226,21 +226,17 @@ document.getElementById("asnForm").addEventListener("submit", function(e){
   e.preventDefault();
 
   const formData = new FormData(this);
-  const data = Object.fromEntries(formData.entries());
 
-  fetch("URL_WEBAPP_BARU_KAMU", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify(data)
-})
-  .then(r => r.text())
+  fetch("https://script.google.com/macros/s/AKfycbxwwx4Vjx1QzszFCI_BA2qJ-cYFb_F5lfyHqnRZtBnyQcokFNaD15oj_eIh_I9wn-s/exec", {
+    method: "POST",
+    body: formData
+  })
+  .then(res => res.text())
   .then(res => {
 
     console.log("SERVER:", res);
 
-    if(res.trim() === "SUCCESS"){
+    if(res.includes("SUCCESS")){
       alert("✅ Data berhasil disimpan");
       this.reset();
     } else {
@@ -252,10 +248,12 @@ document.getElementById("asnForm").addEventListener("submit", function(e){
     console.error(err);
     alert("❌ Koneksi error");
   });
+
 });
 </script>
 </body>
 </html>
+
 
 
 
