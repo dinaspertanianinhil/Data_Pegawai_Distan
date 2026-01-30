@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data ASN Dinas Pertanian Inhil</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  padding:20px;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background:linear-gradient(135deg,#e3f2fd,#e8f5e9);
+}
+
+/* CONTAINER */
+.container{
+  max-width:1150px;
+  margin:auto;
+  background:rgba(255,255,255,0.96);
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 20px 45px rgba(0,0,0,.08);
+}
+
+/* HEADER */
+.header{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  padding:18px;
+  border-radius:16px;
+  background:linear-gradient(135deg,#1b5e20,#43a047);
+  color:#fff;
+}
+
+.header img{
+  width:80px;
+  background:#fff;
+  padding:6px;
+  border-radius:12px;
+}
+
+.header-text{
+  flex:1;
+  text-align:center;
+}
+
+.header-text h2{
+  margin:0;
+  font-size:20px;
+  letter-spacing:.5px;
+}
+
+.header-text p{
+  margin-top:6px;
+  font-size:14px;
+  opacity:.95;
+  font-weight:500;
+}
+
+/* SECTION */
+.section{
+  margin-top:30px;
+}
+
+.section h3{
+  background:linear-gradient(135deg,#2e7d32,#66bb6a);
+  color:white;
+  padding:12px 15px;
+  border-radius:12px;
+  font-size:15px;
+  letter-spacing:.5px;
+}
+
+/* FORM GRID */
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:14px;
+  margin-top:15px;
+}
+
+/* INPUT */
+input,select{
+  padding:12px 14px;
+  border-radius:10px;
+  border:1px solid #ddd;
+  font-size:14px;
+  outline:none;
+  background:#fafafa;
+  transition:.2s ease;
+}
+
+input:focus,select:focus{
+  border-color:#43a047;
+  background:#fff;
+  box-shadow:0 0 0 3px rgba(67,160,71,.15);
+}
+
+/* BUTTON */
+button{
+  margin-top:30px;
+  width:100%;
+  padding:15px;
+  font-size:16px;
+  font-weight:600;
+  border:none;
+  border-radius:14px;
+  cursor:pointer;
+  color:white;
+  background:linear-gradient(135deg,#2e7d32,#43a047);
+  transition:.25s ease;
+  letter-spacing:.5px;
+}
+
+button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 25px rgba(46,125,50,.35);
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .header{
+    flex-direction:column;
+    text-align:center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- KOP -->
+<div class="header">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQvtMhMi3IPSaJOTLYIUlxiX4QMMFIfonoCA&s">
+  <div class="header-text">
+    <h2>DINAS PERTANIAN KABUPATEN INDRAGIRI HILIR</h2>
+    <p>DATA APARATUR SIPIL NEGARA PADA DINAS PERTANIAN KABUPATEN INDRAGIRI HILIR</p>
+  </div>
+</div>
+
+<form id="asnForm">
+
+<!-- DATA PEGAWAI -->
+<div class="section">
+<h3>DATA PEGAWAI</h3>
+
+<div class="form-grid">
+<input name="nip" placeholder="NIP">
+<input name="nama" placeholder="Nama">
+<input name="gelar_depan" placeholder="Gelar Depan">
+<input name="gelar_belakang" placeholder="Gelar Belakang">
+<input type="date" name="tgl_lahir">
+
+<input name="jabatan" placeholder="Nama Jabatan">
+<input name="jenis_jabatan" placeholder="Jenis Jabatan">
+<input name="gol_ruang" placeholder="Golongan">
+
+<input name="tingkat_pendidikan" placeholder="Tingkat Pendidikan">
+<input name="nama_pendidikan" placeholder="Nama Pendidikan">
+
+<input name="unit_kerja" placeholder="Unit Kerja">
+
+<select name="unit_induk">
+  <option value="">Unit Kerja Induk</option>
+  <option>Dinas PTPHP</option>
+  <option>Dinas Perkebunan</option>
+</select>
+
+<select name="Jenis Pegawai">
+  <option value="">Jenis Pegawai</option>
+  <option>PNS</option>
+  <option>PPPK Penuh Waktu</option>
+  <option>PPPK Paruh Waktu</option>
+</select>
+
+<input name="hp" placeholder="No HP">
+<input type="email" name="email" placeholder="Email">
+</div>
+</div>
+
+<!-- DATA ISTRI -->
+<div class="section">
+<h3>DATA ISTRI</h3>
+
+<div class="form-grid">
+<input name="istri1_nama" placeholder="Nama Istri (1)">
+<input name="istri1_status" placeholder="Status">
+<input name="istri1_pekerjaan" placeholder="Pekerjaan">
+
+<input name="istri2_nama" placeholder="Nama Istri (2)">
+<input name="istri2_status" placeholder="Status">
+<input name="istri2_pekerjaan" placeholder="Pekerjaan">
+
+<input name="istri3_nama" placeholder="Nama Istri (3)">
+<input name="istri3_status" placeholder="Status">
+<input name="istri3_pekerjaan" placeholder="Pekerjaan">
+</div>
+</div>
+
+<!-- DATA ANAK -->
+<div class="section">
+<h3>DATA ANAK (DALAM TANGGUNGAN)</h3>
+
+<div class="form-grid">
+<input name="anak1_nama" placeholder="Nama Anak (1)">
+<input name="anak1_umur" placeholder="Umur (Th)">
+
+<input name="anak2_nama" placeholder="Nama Anak (2)">
+<input name="anak2_umur" placeholder="Umur (Th)">
+</div>
+</div>
+
+<button type="submit">💾 SIMPAN DATA ASN</button>
+
+</form>
+
+</div>
+<script>
+const form = document.getElementById("asnForm");
+
+form.addEventListener("submit", async function(e){
+  e.preventDefault();
+
+  const btn = form.querySelector("button");
+  btn.innerHTML = "⏳ Menyimpan...";
+  btn.disabled = true;
+
+  const data = Object.fromEntries(new FormData(form).entries());
+
+  const response = await fetch("PASTE_URL_APPS_SCRIPT_KAMU", {
+    method: "POST",
+    body: JSON.stringify(data)
+  });
+
+  const result = await response.json();
+
+  if(result.status === "success"){
+    alert("✅ Data ASN berhasil disimpan");
+    form.reset();
+  }else{
+    alert("❌ Gagal menyimpan data");
+  }
+
+  btn.innerHTML = "💾 SIMPAN DATA ASN";
+  btn.disabled = false;
+});
+</script>
+
+</body>
+</html>
