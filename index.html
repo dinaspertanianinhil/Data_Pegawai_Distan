@@ -222,36 +222,43 @@ button:hover{
 
 </div>
 <script>
-function kirimData(e) {
-  e.preventDefault(); // ⛔ MATIKAN REFRESH PASTI
-
+(function () {
   const form = document.getElementById("asnForm");
-  const formData = new FormData(form);
 
-  fetch("https://script.google.com/macros/s/AKfycbw6I5Ge-tpEeunAY9HvaRwORY239wyyzQw81E-sppIhSi5l8ZqkHwuj8vwiJfkYy6vL/exec", {
-    method: "POST",
-    body: formData
-  })
-  .then(res => res.text())
-  .then(text => {
-    console.log("RESPON SERVER:", text);
-    if (text.includes("SUCCESS")) {
-      alert("✅ Data berhasil disimpan");
-      form.reset();
-    } else {
-      alert("❌ Gagal simpan\n" + text);
-    }
-  })
-  .catch(err => {
-    console.error(err);
-    alert("❌ Koneksi error");
+  if (!form) {
+    alert("FORM TIDAK DITEMUKAN");
+    return;
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    fetch("https://script.google.com/macros/s/AKfycbw6I5Ge-tpEeunAY9HvaRwORY239wyyzQw81E-sppIhSi5l8ZqkHwuj8vwiJfkYy6vL/exec", {
+      method: "POST",
+      body: formData
+    })
+    .then(res => res.text())
+    .then(text => {
+      console.log("RESPON:", text);
+      if (text.includes("SUCCESS")) {
+        alert("✅ Data berhasil disimpan");
+        form.reset();
+      } else {
+        alert("❌ Gagal simpan:\n" + text);
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      alert("❌ Koneksi error");
+    });
   });
-
-  return false; // ⛔ DOUBLE SAFETY
-}
+})();
 </script>
 </body>
 </html>
+
 
 
 
