@@ -224,39 +224,33 @@ button:hover{
 <script>
 const form = document.getElementById("asnForm");
 
-form.addEventListener("submit", async function(e){
+form.addEventListener("submit", function(e){
   e.preventDefault();
 
-  const btn = form.querySelector("button");
-  btn.innerHTML = "⏳ Menyimpan...";
-  btn.disabled = true;
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
 
-  const data = Object.fromEntries(new FormData(form).entries());
-
-  try {
-
-    const response = await fetch("https://script.google.com/macros/s/AKfycby5CKMLiHC1pUobXVKwL7-Ncpbdn_OCJQGqZIB78YMk05mFdU_Ci0W0tscbJSn-YBtS/exec", {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    });
-
-    alert("✅ Data ASN berhasil disimpan");
+  fetch("https://script.google.com/macros/s/AKfycbwFcJHQi-HGkRblYrLkabF-VVmmdezWREsbq_CY0g9QlRyYLUZqcafYG4tfVIAKxbp0/exec", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then(res => res.text())
+  .then(res => {
+    alert("✅ Data berhasil disimpan!");
     form.reset();
+  })
+  .catch(err => {
+    alert("❌ Gagal simpan data");
+    console.error(err);
+  });
 
-  } catch (error) {
-    alert("❌ Gagal menyimpan data");
-    console.log(error);
-  }
-
-  btn.innerHTML = "💾 SIMPAN DATA ASN";
-  btn.disabled = false;
 });
 </script>
 </body>
 </html>
+
 
 
