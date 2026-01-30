@@ -233,25 +233,30 @@ form.addEventListener("submit", async function(e){
 
   const data = Object.fromEntries(new FormData(form).entries());
 
-  const response = await fetch("https://script.google.com/macros/s/AKfycbxPpL_ZZvZJrAek7tSgRr2p5sfr0mTVl5Wot24WrTINEahvkTvop8lSxizUC84OsIS1/exec", {
-    method: "POST",
-    body: JSON.stringify(data)
-  });
+  try {
 
-  const result = await response.json();
+    const response = await fetch("https://script.google.com/macros/s/AKfycby5CKMLiHC1pUobXVKwL7-Ncpbdn_OCJQGqZIB78YMk05mFdU_Ci0W0tscbJSn-YBtS/exec", {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
 
-  if(result.status === "success"){
     alert("✅ Data ASN berhasil disimpan");
     form.reset();
-  }else{
+
+  } catch (error) {
     alert("❌ Gagal menyimpan data");
+    console.log(error);
   }
 
   btn.innerHTML = "💾 SIMPAN DATA ASN";
   btn.disabled = false;
 });
 </script>
-
 </body>
 </html>
+
 
