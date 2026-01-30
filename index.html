@@ -155,7 +155,8 @@ button:hover{
 <input name="nama" placeholder="Nama">
 <input name="gelar_depan" placeholder="Gelar Depan">
 <input name="gelar_belakang" placeholder="Gelar Belakang">
-<input name="tanggal_lahir" placeholder="Tanggal Lahir">
+<input type="date" name="tanggal_lahir" placeholder="Tanggal Lahir" 
+       onfocus="this.showPicker ? this.showPicker() : null;">
 <input name="jabatan" placeholder="Nama Jabatan">
 <input name="jenis_jabatan" placeholder="Jenis Jabatan">
 <input name="gol_ruang" placeholder="Golongan">
@@ -257,6 +258,7 @@ button:hover{
 </script>
 </body>
 </html>
+
 
 
 
